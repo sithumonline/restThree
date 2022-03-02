@@ -4,6 +4,7 @@ import Navbar from "../../component/Navbar";
 import Contact from "../../modules/Contact";
 import Landing from "../../modules/Landing"
 import WorkReel from "../../modules/WorkReel";
+import Footer from "../../component/Footer";
 
 const Home = () => {
 
@@ -27,6 +28,7 @@ const Home = () => {
                     <Landing />
                     <WorkReel />
                     <Contact />
+                    <Footer />
                 </div>
             </LocomotiveScrollProvider>
         </>
