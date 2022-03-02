@@ -5,9 +5,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 const Contact = () => {
     return (
         <div data-scroll-section>
-            <div className="p-8 h-screen items-stretch flex flex-row gap-4 dark:text-white">
+            <div className="p-8 sm:p-16 pt-24 sm:pt-24 min-h-screen items-stretch flex flex-col sm:flex-row gap-8 sm:gap-4 dark:text-white">
                 <div className="w-7/12">
-                    <h1 className="text-8xl tracking-tight font-light leading-[5.5rem] uppercase">
+                    <h1 className="text-7xl tracking-tight font-light leading-[4.5rem] uppercase">
                         I<br />
                         would<br />
                         love<br />
@@ -17,7 +17,7 @@ const Contact = () => {
                         you.
                     </h1>
                 </div>
-                <div className="flex flex-col self-center gap-10">
+                <div className="flex flex-col self-start sm:self-center pb-24 sm:pb-0 gap-10">
                     <div className="flex flex-col gap-3">
                         <h4 className="text-2xl font-semibold">Say Hello!</h4>
                         <p className="text-xl leading-6">
