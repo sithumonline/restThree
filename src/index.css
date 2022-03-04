@@ -1,14 +1,6 @@
-@import url("styles/locomotive-scroll.css");
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-@font-face {
-  font-family: "Clash Display";
-  src: url("../src/assets/fonts/clash-display/ClashDisplay-Variable.ttf") format("truetype");
-  font-weight: 100 1000;
-}
 
 @font-face {
   font-family: "Cabinet Grotesk";

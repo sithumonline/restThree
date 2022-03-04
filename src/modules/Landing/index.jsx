@@ -1,7 +1,7 @@
 const Landing = () => {
     return (
-        <div data-scroll-section id="home">
-            <div className="p-8 min-h-screen pt-24 sm:p-16 sm:pt-24 flex flex-col justify-between">
+        <div id="home">
+            <div className="p-8 min-h-screen pt-24 sm:p-16 sm:pt-24 flex flex-col gap-8 justify-between">
                 <div>
                     <h2 className="text-3xl font-light uppercase sm:text-6xl dark:text-white">
                         Hello there! I'm a
@@ -15,7 +15,7 @@ const Landing = () => {
                         <span>Developer</span>
                     </div>
                     <span className="text-lg sm:text-2xl leading-5 sm:ml-1 dark:text-white">
-                        Wanna see more? just check my <a href="#" className="text-orange-600">resume.</a>
+                        Wanna see more? just check my <a href="https://drive.google.com/file/d/1XE9ZLo8Im6HR9xQCrtWJhHnXV1Vt3nHF/view?usp=sharing" target="_blank" className="text-orange-600">resume.</a>
                     </span>
 
                 </div>
