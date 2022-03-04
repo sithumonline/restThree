@@ -1,37 +1,46 @@
-import { LocomotiveScrollProvider, useLocomotiveScroll } from "react-locomotive-scroll";
-import { useRef } from "react";
-import Navbar from "../../component/Navbar";
-import Contact from "../../modules/Contact";
-import Landing from "../../modules/Landing"
-import WorkReel from "../../modules/WorkReel";
-import Footer from "../../component/Footer";
+import { Navbar, Footer } from "../../component";
+import { Landing, WorkReel, Contact } from "../../modules";
+import { useEffect, useState } from "react";
 
 const Home = () => {
 
-    const containerRef = useRef(null);
-    const scroll = useLocomotiveScroll();
+    const [theme, setTheme] = useState(("theme" in localStorage) ? localStorage.theme : "dark");
+
+    useEffect(() => {
+        if (!("theme" in localStorage)) {
+            localStorage.theme = theme;
+            document.documentElement.classList.add("dark");
+        }
+        else {
+            if (localStorage.theme === "dark") {
+                document.documentElement.classList.add("dark");
+            }
+            else {
+                document.documentElement.classList.remove("dark");
+            }
+        }
+
+    }, [theme])
+
+    const toggleTheme = () => {
+        if (theme === "dark") {
+            localStorage.theme = "light";
+            setTheme("light");
+        }
+        else {
+            localStorage.theme = "dark";
+            setTheme("dark");
+        }
+    }
 
     return (
-        <>
-            <Navbar />
-            <LocomotiveScrollProvider
-                options={{
-                    smooth: true,
-                    multiplier: 1,
-                }}
-                watch={[
-                    scroll
-                ]}
-                containerRef={containerRef}
-            >
-                <div data-scroll-container ref={containerRef} >
-                    <Landing />
-                    <WorkReel />
-                    <Contact />
-                    <Footer />
-                </div>
-            </LocomotiveScrollProvider>
-        </>
+        <div>
+            <Navbar toggle={toggleTheme} mode={theme}/>
+            <Landing />
+            <WorkReel />
+            <Contact />
+            <Footer mode={theme} />
+        </div>
     )
 }
 
