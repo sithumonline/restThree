@@ -1,10 +1,9 @@
 import { faGithub, faLinkedin, faTwitter } from "@fortawesome/free-brands-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-
 const Contact = () => {
     return (
-        <div data-scroll-section>
+        <div id="contact">
             <div className="p-8 sm:p-16 pt-24 sm:pt-24 min-h-screen items-stretch flex flex-col sm:flex-row gap-8 sm:gap-4 dark:text-white">
                 <div className="w-7/12">
                     <h1 className="text-7xl tracking-tight font-light leading-[4.5rem] uppercase">
@@ -39,9 +38,9 @@ const Contact = () => {
                     <div className="flex flex-col gap-3">
                         <h4 className="text-xl">See me on</h4>
                         <div className="flex flex-row gap-8">
-                            <a href="https://www.linkedin.com/in/miyurugunarathna/" target="_blank"><FontAwesomeIcon icon={faLinkedin} size="lg" /></a>
-                            <a href="https://github.com/miyurugunarathna" target="_blank"><FontAwesomeIcon icon={faGithub} size="lg" /></a>
-                            <a href="https://twitter.com/miyurugunarathn" target="_blank"><FontAwesomeIcon icon={faTwitter} size="lg" /></a>
+                            <a href="https://www.linkedin.com/in/miyurugunarathna/" target="_blank"><FontAwesomeIcon icon={faLinkedin} size="xl" className="transition-all hover:rotate-6 hover:text-orange-500" /></a>
+                            <a href="https://github.com/miyurugunarathna" target="_blank"><FontAwesomeIcon icon={faGithub} size="xl" className="transition-all hover:rotate-6 hover:text-orange-500" /></a>
+                            <a href="https://twitter.com/miyurugunarathn" target="_blank"><FontAwesomeIcon icon={faTwitter} size="xl" className="transition-all hover:rotate-6 hover:text-orange-500" /></a>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,87 @@
+[
+    {
+        "id": 1,
+        "name": "Aspire - Learning Management System",
+        "lang": [
+            "Angular",
+            "SpringBoot",
+            "MySQL"
+        ],
+        "links": {
+            "github": [
+                "https://github.com/miyurugunarathna/aspire-backend.git",
+                "https://github.com/miyurugunarathna/aspire-frontend.git"
+            ]
+        }
+    },
+    {
+        "id": 2,
+        "name": "Dstock - Stock Management App",
+        "lang": [
+            "Java",
+            "SqlLite"
+        ],
+        "links": {
+            "github": [
+                "https://github.com/ShivaaniDushya/MAD-Y2S2.git"
+            ]
+        }
+    },
+    {
+        "id": 3,
+        "name": "Online Music Store",
+        "lang": [
+            "JSP",
+            "Java",
+            "MySQL"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "MS Club Official Web",
+        "lang": [
+            "React.js",
+            "Express.js",
+            "Redux",
+            "Three.js"
+        ],
+        "links": {
+            "web": "https://msclubsliit.org/",
+            "github": [
+                "https://github.com/ms-club-sliit/msclubwesite-v2",
+                "https://github.com/ms-club-sliit/msclub-admin-panel"
+            ]
+        }
+    },
+    {
+        "id": 5,
+        "name": "Portfolio",
+        "lang": [
+            "React.js",
+            "Vite.js",
+            "Three.js",
+            "GSAP",
+            "Tailwind"
+        ],
+        "links": {
+            "web": "https://miyurugunarathna.live",
+            "github": [
+                "https://github.com/miyurugunarathna/portfolio.git"
+            ]
+        }
+    },
+    {
+        "id": 6,
+        "name": "Itp Guide 3.0 Front-End Demo",
+        "lang": [
+            "Angular",
+            "Tailwind"
+        ],
+        "links": {
+            "video": "https://www.youtube.com/watch?v=48JfrPTn6JE",
+            "github": [
+                "https://github.com/ms-club-sliit/itp-guide-3.0-frontend"
+            ]
+        }
+    }
+]
