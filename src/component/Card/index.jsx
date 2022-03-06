@@ -15,7 +15,7 @@ const Card = (props) => {
         layout="intrinsic"
         placeholder="blur"
       />
-      <div className="absolute bottom-0 h-0 w-full group-hover:h-full transition-all ease-out duration-500 flex flex-col items-center justify-center bg-gradient-to-r from-gradientBlue to-gradientPurple rounded-xl md:group-hover:p-4">
+      <div className="absolute bottom-0 h-0 w-full group-hover:h-full transition-all ease-out duration-500 flex flex-col items-center justify-center bg-gradient-to-r backdrop-blur-lg bg-slate-200/70 dark:bg-neutral-900/80 rounded-xl md:group-hover:p-4">
         <h2 className="text-base sm:text-2xl md:text-3xl font-bold text-white group-hover:text-opacity-100 text-opacity-0 text-center mb-4">
           {props.title}
         </h2>
