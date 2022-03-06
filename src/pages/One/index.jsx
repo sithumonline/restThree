@@ -1,6 +1,13 @@
 const One = () => {
   return (
     <div>
+      <div className="p-8 sm:p-16 flex flex-col justify-start dark:text-white">
+        <div className="w-7/12">
+          <h1 className="text-7xl tracking-tight font-light leading-[4.5rem] uppercase">
+            One
+          </h1>
+        </div>
+      </div>
       <div>
         <form className="p-8 sm:p-16 pt-24 items-stretch flex flex-col sm:flex-row gap-8 sm:gap-4 dark:text-white">
           <input
@@ -61,7 +68,9 @@ const One = () => {
 
             <tbody>
               <tr>
-                <td className="text-center">The Sliding Mr. Bones (Next Stop, Pottersville)</td>
+                <td className="text-center">
+                  The Sliding Mr. Bones (Next Stop, Pottersville)
+                </td>
                 <td className="text-center">Malcolm Lockyer</td>
                 <td className="text-center">1961</td>
                 <td className="text-center">
