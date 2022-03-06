@@ -53,6 +53,8 @@ const One = () => {
                 <th>Song</th>
                 <th>Artist</th>
                 <th>Year</th>
+                <th>Edit</th>
+                <th>Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -60,16 +62,76 @@ const One = () => {
                 <td>The Sliding Mr. Bones (Next Stop, Pottersville)</td>
                 <td>Malcolm Lockyer</td>
                 <td>1961</td>
+                <td>
+                  <samp
+                    className="text-blue-500 hover:text-blue-600 cursor-pointer"
+                    onClick={() => {
+                      console.log("Edit");
+                    }}
+                  >
+                    Edit
+                  </samp>
+                </td>
+                <td>
+                  <samp
+                    className="text-red-500 hover:text-red-600 cursor-pointer"
+                    onClick={() => {
+                      console.log("Delete");
+                    }}
+                  >
+                    Delete
+                  </samp>
+                </td>
               </tr>
               <tr>
                 <td>Witchy Woman</td>
                 <td>The Eagles</td>
                 <td>1972</td>
+                <td>
+                  <samp
+                    className="text-blue-500 hover:text-blue-600 cursor-pointer"
+                    onClick={() => {
+                      console.log("Edit");
+                    }}
+                  >
+                    Edit
+                  </samp>
+                </td>
+                <td>
+                  <samp
+                    className="text-red-500 hover:text-red-600 cursor-pointer"
+                    onClick={() => {
+                      console.log("Delete");
+                    }}
+                  >
+                    Delete
+                  </samp>
+                </td>
               </tr>
               <tr>
                 <td>Shining Star</td>
                 <td>Earth, Wind, and Fire</td>
                 <td>1975</td>
+                <td>
+                  <samp
+                    className="text-blue-500 hover:text-blue-600 cursor-pointer"
+                    onClick={() => {
+                      console.log("Edit");
+                    }}
+                  >
+                    Edit
+                  </samp>
+                </td>
+                <td>
+                  <samp
+                    className="text-red-500 hover:text-red-600 cursor-pointer"
+                    onClick={() => {
+                      console.log("Delete");
+                    }}
+                  >
+                    Delete
+                  </samp>
+                </td>
               </tr>
             </tbody>
           </table>

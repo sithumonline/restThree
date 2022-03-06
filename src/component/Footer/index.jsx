@@ -14,7 +14,7 @@ const Footer = (props) => {
           <span className="text-lg">Copyright © 2022 Miyuru Gunarathna.</span>
           <Link
             to="/#"
-            className="rounded-3xl border border-black dark:border-white px-3 py-1 uppercase hover:bg-black dark:hover:bg-white hover:text-white dark:hover:text-black"
+            className="rounded-3xl border px-3 py-1 uppercase hover:bg-orange-500 dark:hover:bg-orange-500 hover:text-white dark:hover:text-white"
           >
             Back to Top
           </Link>
