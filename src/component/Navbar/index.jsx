@@ -11,7 +11,6 @@ const Navbar = (props) => {
             to="/"
             rel="noreferrer"
             className="hover:text-orange-500"
-            activeClass="text-orange-500"
           >
             Home
           </Link>
