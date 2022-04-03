@@ -17,6 +17,7 @@ const Navbar = (props) => {
         </div>
         <div>
           <button
+            id="mod"
             onClick={props.toggle}
             className="font-semibold flex items-center gap-1 hover:text-orange-500"
           >
