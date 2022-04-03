@@ -4,6 +4,9 @@ import { Note_API } from "../../api/note";
 import "./one.css";
 
 const One = (props) => {
+
+  Note_API.setBasePath(props.data.name);
+
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -63,7 +66,7 @@ const One = (props) => {
       <div className="p-8 sm:p-16 flex flex-col justify-start dark:text-white">
         <div className="w-7/12">
           <h1 className="text-7xl tracking-tight font-light leading-[4.5rem] uppercase">
-            {props.section.title}
+            {props.data.title}
           </h1>
         </div>
       </div>

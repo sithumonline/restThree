@@ -43,9 +43,9 @@ function App() {
             {sections.map((section, index) => (
               <Route
                 key={index}
-                path={section.url}
+                path={section.path}
                 exact
-                render={() => <One section={section} />}
+                render={() => <One data={section} />}
               />
             ))}
           </Switch>

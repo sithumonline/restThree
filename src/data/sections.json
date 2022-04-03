@@ -1,7 +1,7 @@
 [
   {
-    "key": "One",
+    "name": "category",
     "title": "Sections One",
-    "url": "/one"
+    "path": "/one"
   }
 ]

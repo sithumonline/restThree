@@ -1,8 +1,13 @@
 import { apiInstance } from "../apiInstance";
 
-export async function getNotes() {
-  const PATH = "/api/v1/category/";
+let basePath = "category";
+export const setBasePath = (path) => {
+  basePath = path;
+};
 
+const PATH = `/api/v1/${basePath}`;
+
+export async function getNotes() {
   try {
     const res = await apiInstance.get(PATH);
     const apiRes = res.data;
@@ -13,8 +18,6 @@ export async function getNotes() {
 }
 
 export async function getNote() {
-  const PATH = "/api/v1/category/"
-
   try {
     const res = await apiInstance.get(PATH);
     const apiRes = res.data;
@@ -25,8 +28,6 @@ export async function getNote() {
 }
 
 export async function create(requestData) {
-  const PATH = "/api/v1/category/";
-
   try {
     const res = await apiInstance.post(PATH, requestData);
     const apiRes = res.data;
@@ -37,10 +38,8 @@ export async function create(requestData) {
 }
 
 export async function update(requestData) {
-  const PATH = `/api/v1/category/${requestData.id}`;
-
   try {
-    const res = await apiInstance.put(PATH, requestData);
+    const res = await apiInstance.put(`${PATH}/${requestData.id}`, requestData);
     const apiRes = res.data;
     return apiRes;
   } catch (e) {
@@ -49,10 +48,8 @@ export async function update(requestData) {
 }
 
 export async function remove(id) {
-  const PATH = `/api/v1/category/${id}`;
-
   try {
-    const res = await apiInstance.delete(PATH);
+    const res = await apiInstance.delete(`${PATH}/${id}`);
     const apiRes = res.data;
     return apiRes;
   } catch (e) {
