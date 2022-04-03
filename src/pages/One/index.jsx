@@ -1,15 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import { Note_API } from "../../api/note";
+import "./one.css";
 
 const One = () => {
   const queryClient = useQueryClient();
+
+  useEffect(() => {
+    document.getElementById("mod").addEventListener("click", () => {
+      const input = document.getElementsByTagName("input");
+      Array.from(input).forEach((element) => {
+        if (localStorage.theme === "dark") {
+          element.classList.remove("dark-calender");
+        } else {
+          element.classList.add("dark-calender");
+        }
+      });
+    });
+  }, []);
 
   const [form, setForm] = useState({
     id: "",
     name: "",
     description: "",
-    // year: "",
+    date: "",
+    time: "",
     isUpdate: false,
   });
 
@@ -27,7 +42,8 @@ const One = () => {
         id: "",
         name: "",
         description: "",
-        // year: "",
+        date: "",
+        time: "",
         isUpdate: false,
       });
       queryClient.invalidateQueries("todos");
@@ -40,7 +56,7 @@ const One = () => {
     },
   });
 
-  const { isLoading, isError, isSuccess, data, error } = useQuery(
+  const { isSuccess, data } = useQuery(
     "todos",
     Note_API.getNotes
   );
@@ -72,14 +88,23 @@ const One = () => {
             onChange={updateForm}
             value={form.description}
           />
-          {/* <input
+          <input
             className="appearance-none border rounded w-full py-2 px-3 text-black dark:text-white dark:bg-black bg-white leading-tight focus:outline-none focus:shadow-outline"
-            name="year"
-            type="text"
-            placeholder="Year"
+            name="date"
+            type="date"
+            id="date"
+            placeholder="Date"
             onChange={updateForm}
-            value={form.year}
-          /> */}
+            value={form.date}
+          />
+          <input
+            className="appearance-none border rounded w-full py-2 px-3 text-black dark:text-white dark:bg-black bg-white leading-tight focus:outline-none focus:shadow-outline"
+            name="time"
+            type="time"
+            placeholder="Time"
+            onChange={updateForm}
+            value={form.time}
+          />
           <button
             className="dark:bg-white bg-black hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:text-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
@@ -89,20 +114,23 @@ const One = () => {
                   id: form.id,
                   name: form.name,
                   description: form.description,
-                  // year: form.year,
+                  date: form.date,
+                  time: form.time,
                 });
                 setForm({
                   id: "",
                   name: "",
                   description: "",
-                  // year: "",
+                  date: "",
+                  time: "",
                   isUpdate: false,
                 });
               } else {
                 handleCreate.mutate({
                   name: form.name,
                   description: form.description,
-                  // year: form.year,
+                  date: form.date,
+                  time: form.time,
                 });
               }
             }}
@@ -135,7 +163,8 @@ const One = () => {
               <tr>
                 <th className="text-center">Song</th>
                 <th className="text-center">Artist</th>
-                {/* <th className="text-center">Year</th> */}
+                <th className="text-center">Date</th>
+                <th className="text-center">Time</th>
                 <th className="text-center">Edit</th>
                 <th className="text-center">Delete</th>
               </tr>
@@ -172,10 +201,11 @@ const Row = (props) => {
   });
 
   return (
-    <tr>
+    <tr key={props.id}>
       <td className="text-center">{props.name}</td>
       <td className="text-center">{props.description}</td>
-      <td className="text-center">{props.year}</td>
+      <td className="text-center">{props.date}</td>
+      <td className="text-center">{props.time}</td>
       <td className="text-center">
         <samp
           className="text-blue-500 hover:text-blue-600 cursor-pointer"
@@ -184,7 +214,8 @@ const Row = (props) => {
               id: props.id,
               name: props.name,
               description: props.description,
-              // year: props.year,
+              date: props.date,
+              time: props.time,
               isUpdate: true,
             });
           }}
