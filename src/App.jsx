@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import * as Pages from "./pages";
+import { Home, One } from "./pages";
 import { Navbar, Footer } from "./component";
 import { sections } from "./data";
 
@@ -39,13 +39,13 @@ function App() {
         <div className="pt-20">
           <Navbar toggle={toggleTheme} mode={theme} />
           <Switch>
-            <Route exact path="/" component={Pages.Home}/>
+            <Route exact path="/" component={Home} />
             {sections.map((section, index) => (
               <Route
                 key={index}
                 path={section.url}
                 exact
-                component={Pages[section.key]}
+                render={() => <One section={section} />}
               />
             ))}
           </Switch>

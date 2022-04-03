@@ -3,7 +3,7 @@ import { useQuery, useMutation, useQueryClient } from "react-query";
 import { Note_API } from "../../api/note";
 import "./one.css";
 
-const One = () => {
+const One = (props) => {
   const queryClient = useQueryClient();
 
   useEffect(() => {
@@ -63,7 +63,7 @@ const One = () => {
       <div className="p-8 sm:p-16 flex flex-col justify-start dark:text-white">
         <div className="w-7/12">
           <h1 className="text-7xl tracking-tight font-light leading-[4.5rem] uppercase">
-            One
+            {props.section.title}
           </h1>
         </div>
       </div>
