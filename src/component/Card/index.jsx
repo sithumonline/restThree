@@ -10,7 +10,7 @@ const Card = (props) => {
       <img
         className="rounded-xl"
         src={props.logo}
-        alt="SLIIT FOSS"
+        alt="New Horizons"
         quality={90}
         layout="intrinsic"
         placeholder="blur"
