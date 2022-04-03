@@ -11,7 +11,7 @@ const Footer = (props) => {
             src={props.mode === "dark" ? logoLight : logoDark}
             width="32px"
           />
-          <span className="text-lg">Copyright © 2022 Miyuru Gunarathna.</span>
+          <span className="text-lg">Copyright © 2022 New Horizons.</span>
           <Link
             to="/#"
             className="rounded-3xl border px-3 py-1 uppercase hover:bg-orange-500 dark:hover:bg-orange-500 hover:text-white dark:hover:text-white"
