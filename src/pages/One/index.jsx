@@ -4,7 +4,6 @@ import { Note_API } from "../../api/note";
 import "./one.css";
 
 const One = (props) => {
-
   Note_API.setBasePath(props.data.name);
 
   const queryClient = useQueryClient();
@@ -24,10 +23,7 @@ const One = (props) => {
 
   const [form, setForm] = useState({
     id: "",
-    name: "",
-    description: "",
-    date: "",
-    time: "",
+    ...props.data.props,
     isUpdate: false,
   });
 
@@ -43,23 +39,20 @@ const One = (props) => {
     onSuccess: () => {
       setForm({
         id: "",
-        name: "",
-        description: "",
-        date: "",
-        time: "",
+        ...props.data.props,
         isUpdate: false,
       });
-      queryClient.invalidateQueries("todos");
+      queryClient.invalidateQueries(props.data.name);
     },
   });
 
   const handleUpdate = useMutation(Note_API.update, {
     onSuccess: () => {
-      queryClient.invalidateQueries("todos");
+      queryClient.invalidateQueries(props.data.name);
     },
   });
 
-  const { isSuccess, data } = useQuery("todos", Note_API.getNotes);
+  const { isSuccess, data } = useQuery(props.data.name, Note_API.getNotes);
 
   return (
     <div>
@@ -72,65 +65,39 @@ const One = (props) => {
       </div>
       <div>
         <form className="p-8 sm:p-16 pt-24 items-stretch flex flex-col sm:flex-row gap-8 sm:gap-4 dark:text-white">
-          <input
-            className="appearance-none border rounded w-full py-2 px-3 text-black dark:text-white dark:bg-black bg-white leading-tight focus:outline-none focus:shadow-outline"
-            name="name"
-            type="text"
-            placeholder="Name"
-            onChange={updateForm}
-            value={form.name}
-          />
-          <input
-            className="appearance-none border rounded w-full py-2 px-3 text-black dark:text-white dark:bg-black bg-white leading-tight focus:outline-none focus:shadow-outline"
-            name="description"
-            type="text"
-            placeholder="Artist"
-            onChange={updateForm}
-            value={form.description}
-          />
-          <input
-            className="appearance-none border rounded w-full py-2 px-3 text-black dark:text-white dark:bg-black bg-white leading-tight focus:outline-none focus:shadow-outline"
-            name="date"
-            type="date"
-            id="date"
-            placeholder="Date"
-            onChange={updateForm}
-            value={form.date}
-          />
-          <input
-            className="appearance-none border rounded w-full py-2 px-3 text-black dark:text-white dark:bg-black bg-white leading-tight focus:outline-none focus:shadow-outline"
-            name="time"
-            type="time"
-            placeholder="Time"
-            onChange={updateForm}
-            value={form.time}
-          />
+          {props.data.fields.map((field, index) => (
+            <input
+              className="appearance-none border rounded w-full py-2 px-3 text-black dark:text-white dark:bg-black bg-white leading-tight focus:outline-none focus:shadow-outline"
+              name={field.name}
+              type={field.type}
+              placeholder={field.title}
+              onChange={updateForm}
+              value={form[field.name]}
+              key={index}
+            />
+          ))}
           <button
             className="dark:bg-white bg-black hover:bg-orange-500 dark:hover:bg-orange-500 dark:hover:text-white dark:text-black text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="button"
             onClick={() => {
+              const f = props.data.fields.map((field) => {
+                return {
+                  [field.name]: form[field.name],
+                };
+              });
               if (form.isUpdate) {
                 handleUpdate.mutate({
                   id: form.id,
-                  name: form.name,
-                  description: form.description,
-                  date: form.date,
-                  time: form.time,
+                  ...f.reduce((acc, cur) => ({ ...acc, ...cur }), {}),
                 });
                 setForm({
                   id: "",
-                  name: "",
-                  description: "",
-                  date: "",
-                  time: "",
+                  ...props.data.props,
                   isUpdate: false,
                 });
               } else {
                 handleCreate.mutate({
-                  name: form.name,
-                  description: form.description,
-                  date: form.date,
-                  time: form.time,
+                  ...f.reduce((acc, cur) => ({ ...acc, ...cur }), {}),
                 });
               }
             }}
@@ -161,24 +128,21 @@ const One = (props) => {
           <table className="table-auto">
             <thead>
               <tr>
-                <th className="text-center">Song</th>
-                <th className="text-center">Artist</th>
-                <th className="text-center">Date</th>
-                <th className="text-center">Time</th>
-                <th className="text-center">Edit</th>
-                <th className="text-center">Delete</th>
+                {props.data.fields.map((field, index) => (
+                  <th className="text-center" key={index}>
+                    {field.title}
+                  </th>
+                ))}
               </tr>
             </thead>
 
             <tbody>
               {isSuccess &&
-                data.map((note) => (
+                data.map((note, index) => (
                   <Row
-                    id={note.id}
-                    key={note.id}
-                    name={note.name}
-                    description={note.description}
-                    year={note.year}
+                    key={index}
+                    data={note}
+                    name={props.data.name}
                     state={setForm}
                   />
                 ))}
@@ -197,26 +161,30 @@ const Row = (props) => {
 
   const handleDelete = useMutation(Note_API.remove, {
     onSuccess: () => {
-      queryClient.invalidateQueries("todos");
+      queryClient.invalidateQueries(props.name);
     },
   });
 
   return (
-    <tr key={props.id}>
-      <td className="text-center">{props.name}</td>
-      <td className="text-center">{props.description}</td>
-      <td className="text-center">{props.date}</td>
-      <td className="text-center">{props.time}</td>
+    <tr key={props.data.id}>
+      {Object.keys(props.data)
+        .filter((key) => key !== "id")
+        .map((key, index) => (
+          <td className="text-center" key={index}>
+            {props.data[key]}
+          </td>
+        ))}
       <td className="text-center">
         <samp
           className="text-blue-500 hover:text-blue-600 cursor-pointer"
           onClick={() => {
+            const f = Object.keys(props.data).map((key) => {
+              return {
+                [key]: props.data[key],
+              };
+            });
             props.state({
-              id: props.id,
-              name: props.name,
-              description: props.description,
-              date: props.date,
-              time: props.time,
+              ...f.reduce((acc, cur) => ({ ...acc, ...cur }), {}),
               isUpdate: true,
             });
           }}
@@ -232,7 +200,7 @@ const Row = (props) => {
               "Are you sure you want to delete this?"
             );
             if (alert) {
-              handleDelete.mutate(props.id);
+              handleDelete.mutate(props.data.id);
             }
           }}
         >
