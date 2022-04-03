@@ -1,7 +1,7 @@
 import { apiInstance } from "../apiInstance";
 
 export async function getNotes() {
-  const PATH = "/category/";
+  const PATH = "/api/v1/category/";
 
   try {
     const res = await apiInstance.get(PATH);
@@ -13,7 +13,7 @@ export async function getNotes() {
 }
 
 export async function getNote() {
-  const PATH = "/category/"
+  const PATH = "/api/v1/category/"
 
   try {
     const res = await apiInstance.get(PATH);
@@ -25,7 +25,7 @@ export async function getNote() {
 }
 
 export async function create(requestData) {
-  const PATH = "/category/";
+  const PATH = "/api/v1/category/";
 
   try {
     const res = await apiInstance.post(PATH, requestData);
@@ -37,7 +37,7 @@ export async function create(requestData) {
 }
 
 export async function update(requestData) {
-  const PATH = `/category/${requestData.id}`;
+  const PATH = `/api/v1/category/${requestData.id}`;
 
   try {
     const res = await apiInstance.put(PATH, requestData);
@@ -49,7 +49,7 @@ export async function update(requestData) {
 }
 
 export async function remove(id) {
-  const PATH = `/category/${id}`;
+  const PATH = `/api/v1/category/${id}`;
 
   try {
     const res = await apiInstance.delete(PATH);
