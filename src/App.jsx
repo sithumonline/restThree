@@ -40,8 +40,9 @@ function App() {
           <Navbar toggle={toggleTheme} mode={theme} />
           <Switch>
             <Route exact path="/" component={Pages.Home}/>
-            {sections.map((section) => (
+            {sections.map((section, index) => (
               <Route
+                key={index}
                 path={section.url}
                 exact
                 component={Pages[section.key]}

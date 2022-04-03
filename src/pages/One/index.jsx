@@ -175,6 +175,7 @@ const One = () => {
                 data.map((note) => (
                   <Row
                     id={note.id}
+                    key={note.id}
                     name={note.name}
                     description={note.description}
                     year={note.year}
