@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import { Home, One } from "./pages";
+import * as Pages from "./pages";
 import { Navbar, Footer } from "./component";
+import { sections } from "./data";
 
 function App() {
   const queryClient = new QueryClient();
@@ -38,8 +39,14 @@ function App() {
         <div className="pt-20">
           <Navbar toggle={toggleTheme} mode={theme} />
           <Switch>
-            <Route path="/" component={Home} exact />
-            <Route path="/one" component={One} exact />
+            <Route exact path="/" component={Pages.Home}/>
+            {sections.map((section) => (
+              <Route
+                path={section.url}
+                exact
+                component={Pages[section.key]}
+              />
+            ))}
           </Switch>
           <Footer mode={theme} />
         </div>
