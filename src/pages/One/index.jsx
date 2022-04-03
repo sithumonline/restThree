@@ -56,10 +56,7 @@ const One = () => {
     },
   });
 
-  const { isSuccess, data } = useQuery(
-    "todos",
-    Note_API.getNotes
-  );
+  const { isSuccess, data } = useQuery("todos", Note_API.getNotes);
 
   return (
     <div>
@@ -228,7 +225,12 @@ const Row = (props) => {
         <samp
           className="text-red-500 hover:text-red-600 cursor-pointer"
           onClick={() => {
-            handleDelete.mutate(props.id);
+            const alert = window.confirm(
+              "Are you sure you want to delete this?"
+            );
+            if (alert) {
+              handleDelete.mutate(props.id);
+            }
           }}
         >
           Delete
